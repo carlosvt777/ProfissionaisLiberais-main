@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - ProfissionaisLib</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="login-page">
+        <div class="login-container">
+            <h1>Entrar</h1>
+            <form id="loginForm" class="login-form">
+                <input type="email" id="email" placeholder="Email" required>
+                <input type="password" id="senha" placeholder="Senha" required>
+                
+                <!-- Mensagem de erro de senha -->
+                <div id="senhaError" class="error-message">A senha deve ter pelo menos 8 caracteres, 1 número e 1 letra maiúscula.</div>
+                
+                <div class="form-options">
+                    <div class="remember-me">
+                        <input type="checkbox" id="rememberMe">
+                        <label for="rememberMe">Lembrar-me</label>
+                    </div>
+                    <a href="#" class="forgot-password">Esqueceu a senha?</a>
+                </div>
+                <button type="submit" class="submit-button">Entrar</button>
+            </form>
+            <div class="register-link">
+                <p>Não tem uma conta? <a href="cadastro.html" class="accent-link">Cadastre-se</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Previne o envio do formulário
+
+            const senha = document.getElementById("senha").value;
+            const senhaError = document.getElementById("senhaError");
+
+            // Expressão regular para validar a senha
+            const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+
+            // Se a senha não cumprir os requisitos
+            if (!regex.test(senha)) {
+                senhaError.style.display = "block"; // Exibe a mensagem de erro
+            } else {
+                senhaError.style.display = "none"; // Oculta a mensagem de erro
+                alert("Login realizado com sucesso!");
+                // Aqui você pode adicionar código para enviar o formulário ou realizar outras ações
+                // Por exemplo, redirecionar para a página principal:
+                window.location.href = "index.html";  // Redireciona para a página inicial
+            }
+        });
+    </script>
+
+</body>
+</html>
